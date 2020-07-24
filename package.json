@@ -1,0 +1,25 @@
+{
+  "name": "cocktail-db-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "mysql2": "^2.1.0",
+    "sequelize": "^5.22.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/median-man/cocktail-db-demo.git"
+  },
+  "keywords": [],
+  "author": "John Desrosiers <john.desro@gmail.com> (https://github.com/median-man)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/median-man/cocktail-db-demo/issues"
+  },
+  "homepage": "https://github.com/median-man/cocktail-db-demo#readme"
+}
