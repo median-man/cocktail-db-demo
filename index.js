@@ -1,40 +1,40 @@
 const db = require("./models");
 
-db.sequelize
-  .sync({ force: true })
-  .then(createIngredients)
-  .catch((error) => {
-    console.log(error);
-  });
+seedDb(findCocktailWithIngredients);
 
-function createIngredients() {
-  /*
-    Teqelia Sunrise
-    grenadine,
-    orange juice,
-    tequila
+// add some ingredients and one cocktail
+function seedDb(cb) {
+  db.sequelize
+    .sync({ force: true })
+    .then(createCocktails)
+    .then(console.log)
+    .catch((error) => {
+      console.log(error);
+    });
 
-    Martini
-    vermouth,
-    gin,
-    olive
-  */
-  const ingredients = [
-    {
-      name: "grenadine",
-      category: "sweetener",
-    },
-    {
-      name: "orange juice",
-      category: "sweetener",
-    },
-    {
-      name: "tequila",
-      category: "alcohol",
-    },
-  ];
+  function createCocktails() {
+    return db.Ingredient.bulkCreate([
+      { name: "tequila", category: "alcohol" },
+      { name: "orange juice", category: "sweetener" },
+      { name: "grenadine", category: "sweetener" },
+    ]).then((ingredients) => {
+      const newCocktailRecord = new db.Cocktail({
+        name: "Tequila Sunrise",
+        recipe:
+          "Pour the tequila and orange juice into glass over ice. Add the grenadine, which will sink to the bottom. Do not stir. Garnish and serve.",
+        imageUrl:
+          "https://www.acouplecooks.com/wp-content/uploads/2020/04/Tequila-Sunrise-003s.jpg",
+      });
+      return newCocktailRecord
+        .save()
+        .then((cocktail) => cocktail.setIngredients(ingredients))
+        .then(cb);
+    });
+  }
+}
 
-  Promise.all(
-    ingredients.map((ingredient) => db.Ingredient.create(ingredient))
-  ).then(console.log);
+function findCocktailWithIngredients() {
+  db.Cocktail.findAll({
+    include: [db.Ingredient],
+  }).then(results => results.forEach(cocktail => console.log(cocktail.toJSON())));
 }

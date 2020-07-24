@@ -17,21 +17,20 @@ module.exports = (sequelize, DataTypes) => {
     recipe: {
       type: DataTypes.TEXT,
       allowNull: false,
-      
     },
-    imageUrl :{
-        type: DataTypes.TEXT,
-        allowNull: false,
-        validate: {
-           isUrl: true,
-        }
-      }    
+    imageUrl: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+      validate: {
+        isUrl: true,
+      },
+    },
   });
 
   Cocktail.associate = (models) => {
     Cocktail.belongsToMany(models.Ingredient, {
       through: "CocktailIngredient",
     });
-  }
+  };
   return Cocktail;
 };
