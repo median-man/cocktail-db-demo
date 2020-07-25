@@ -1,6 +1,6 @@
-const db = require("./models");
+const db = require("../models");
 const { Op } = require("sequelize");
-const { Sequelize } = require("./models");
+const { Sequelize } = require("../models");
 
 // sync the database first
 db.sequelize.sync().then(() => {
