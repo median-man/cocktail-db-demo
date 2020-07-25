@@ -17,6 +17,11 @@ async function populateDb() {
     { name: "gin", category: "alcohol" },
     { name: "vermouth", category: "other" },
     { name: "olive", category: "other" },
+    { name: "tomato juice", category: "other" },
+    { name: "lemon juice", category: "sour" },
+    { name: "tobasco sauce", category: "other" },
+    { name: "celery salt", category: "other" },
+    { name: "lemon slice", category: "other" },
   ]);
 
   const cocktails = await db.Cocktail.bulkCreate([
@@ -37,6 +42,13 @@ async function populateDb() {
       imageUrl:
         "https://www.thespruceeats.com/thmb/OevcAqV-nURBs51XZpzg5gVp5rE=/3870x2580/filters:fill(auto,1)/vodka-martini-recipe-760983-Hero-5bd771cd4cedfd0026121758.jpg",
     },
+    {
+      name: "Bloody Maria",
+      recipe: `Shake all ingredients (except lemon slice) with cracked ice and strain into an old-fashioned glass over ice cubes.
+      Add the slice of lemon and serve.`,
+      imageUrl:
+        "https://www.thecocktaildb.com/images/media/drink/yz0j6z1504389461.jpg",
+    }
   ]);
 
   await db.CocktailIngredient.bulkCreate([
@@ -46,6 +58,12 @@ async function populateDb() {
     { CocktailId: 2, IngredientId: 4 },
     { CocktailId: 2, IngredientId: 5 },
     { CocktailId: 2, IngredientId: 6 },
+    { CocktailId: 3, IngredientId: 1 },
+    { CocktailId: 3, IngredientId: 7 },
+    { CocktailId: 3, IngredientId: 8 },
+    { CocktailId: 3, IngredientId: 9 },
+    { CocktailId: 3, IngredientId: 10 },
+    { CocktailId: 3, IngredientId: 11 }
   ]);
 
   console.log(
