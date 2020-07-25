@@ -2,12 +2,14 @@ const db = require("./models");
 const lodash = require("lodash");
 const { Op } = require("sequelize");
 
-// findCocktailWithIngredients();
+// sync the database first
+db.sequelize.sync().then(() => {
+  // findCocktailWithIngredients();
 
-
-cocktailIngredientSearch("gin,vermouth,olive").then((cocktails) =>
-  cocktails.forEach((c) => console.log(c.toJSON()))
-);
+  cocktailIngredientSearch("gin,vermouth,olive").then((cocktails) =>
+    cocktails.forEach((c) => console.log(c.toJSON()))
+  );
+});
 
 function findCocktailWithIngredients() {
   db.Cocktail.findAll({
