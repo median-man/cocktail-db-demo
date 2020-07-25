@@ -1,7 +1,7 @@
 const db = require("../models");
 
 db.sequelize
-  .sync({ force: true })
+  .sync()
   .then(populateDb)
   .then(() => process.exit(0))
   .catch((error) => {

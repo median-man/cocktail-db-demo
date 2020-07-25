@@ -4,6 +4,7 @@ const { Op } = require("sequelize");
 
 // findCocktailWithIngredients();
 
+
 cocktailIngredientSearch("gin,vermouth,olive").then((cocktails) =>
   cocktails.forEach((c) => console.log(c.toJSON()))
 );
