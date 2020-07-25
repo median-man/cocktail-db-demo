@@ -21,3 +21,7 @@ Renders html with all cocktails. If provided with optional "ingredients" paramet
 ### GET /api/cocktails
 
 Responds with JSON array of cocktails. Uses same query parameter for ingredients from `GET /cocktails`.
+
+## Query Examples
+
+Additional examples of querying the cocktail db may be found in `/examples/query-examples.js`.
